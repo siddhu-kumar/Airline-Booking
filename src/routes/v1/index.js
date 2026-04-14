@@ -1,9 +1,13 @@
 import express from 'express'
 
-import { InfoController } from '../../controllers/info-controller.js';
+import {InfoController} from '../../controllers/index.js';
+
+import { router as airplaneRoutes} from './airplane-routes.js'
 
 const router = express.Router();
 
-router.get('/info', InfoController)
+router.use('/airplanes', airplaneRoutes)
+
+router.get('/info', InfoController.info)
 
 export const v1Routes = router;

@@ -1,0 +1,1 @@
+export { AirplaneRepository } from "./airplane-repository.js";
