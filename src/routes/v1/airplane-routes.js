@@ -9,5 +9,7 @@ export const router = express.Router();
 router.post('/', AirplaneMiddlewares.validateCreateRequest, AirplaneController.createAirplane)
 
 // /api/v1/airplanes GET
-
 router.get('/', AirplaneController.getAirplanes)
+
+// /api/v1/airplanes/:id GET
+router.get('/:id', AirplaneController.getAirplane)

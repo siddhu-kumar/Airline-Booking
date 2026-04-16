@@ -21,11 +21,34 @@ export const createAirplane = async (req, res) => {
   }
 };
 
+/*
+ * GET : /airplanes
+ * req-body {}
+ */
+
+
 export const getAirplanes = async (req, res) => {
   try {
     const airplanes = await Airplaneservice.getAirplanes();
     SuccessResponse.data = airplanes;
     return res.status(StatusCodes.OK).json(SuccessResponse)
+  } catch(error) {
+    ErrorResponse.error = error;
+    return res.status(error.statusCode).json(ErrorResponse);  
+  }
+}
+
+/*
+ * GET : /airplanes/:id
+ * req-body {}
+ */
+
+
+export const getAirplane = async (req, res) => {
+  try {
+    const airplanes = await Airplaneservice.getAirplane(req.params.id);
+    SuccessResponse.data = airplanes;
+    return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch(error) {
     ErrorResponse.error = error;
     return res.status(error.statusCode).json(ErrorResponse);  
