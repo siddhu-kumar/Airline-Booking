@@ -5,4 +5,3 @@ export class AppError extends Error {
     this.explanation = message;
   }
 }
-
