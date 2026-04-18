@@ -13,4 +13,4 @@ app.use('/api', apiRoutes);
 
 app.listen(ServerConfig, ()=> {
   console.log(`Server is running on ${ServerConfig}`)
-})  
+})
