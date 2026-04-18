@@ -64,3 +64,22 @@ export const destroyAirplane = async (id) => {
     );
   }
 }
+
+export const updateAirplane = async (id, data) => {
+  try {
+    const airplane = await airplaneRepository.update(id, data);
+    return airplane;
+  } catch (error) {
+    if (error.name == "SequelizeValidationError") {
+      let explanation = [];
+      error.errors.forEach((error) => {
+        explanation.push(error.message);
+      });
+      throw new AppError(explanation, StatusCodes.BAD_REQUEST);
+    }
+    throw new AppError(
+      "Cannot update given Airplane Obejct",
+      StatusCodes.INTERNAL_SERVER_ERROR,
+    );
+  }
+};
